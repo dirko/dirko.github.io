@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+I'm a data scientist and machine learning developer working on education,
+health, and supply chain problems.
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+My favourite tools are Python, `sklearn`, probabilistic graphical models, 
+conditional random fields, and lately deep belief networks.
 
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+I'm also interested in natural language processing and how 
+artificial intelligence will change the world.
