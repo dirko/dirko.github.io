@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 2px;
   text-align: center;
 
-  line-height: 1.7;
+  line-height: 1.4;
   margin: 1em 0 15px;
   padding: 0;
 
@@ -247,6 +247,19 @@ nav {
   }
 }
 
+table {
+    border: solid thin;
+    border-collapse: collapse;
+}
+td { 
+  border: solid thin;
+  padding: 0.3rem;
+}
+th { 
+  border: solid thin;
+  padding: 0.5rem;
+}
+
 //
 // .main
 //
@@ -267,7 +280,7 @@ nav {
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
-    font-size: 22px;
+    font-size: 16;
     font-style: italic;
   }
 
@@ -292,6 +305,7 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start

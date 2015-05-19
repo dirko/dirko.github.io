@@ -9,7 +9,8 @@ name: Dirko Coetsee
 description: Machine learning and Python. 
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://avatars2.githubusercontent.com/u/965973?v=3&s=140
+avatar: /images/me.jpeg
+# https://avatars2.githubusercontent.com/u/965973?v=3&s=140
 #
 # Flags below are optional
 #
@@ -51,6 +52,8 @@ baseurl: ""
 #
 
 markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
 highlighter: pygments
 permalink: /:title/
 
