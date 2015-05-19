@@ -159,7 +159,7 @@ has three dimensions (if we were to unstack them).
 or offset feature. 
 - The second is 1 when the characters of the two input
 strings in that lattice position is equal and 0 otherwise.
-- The third element is 1 when the character are equal and both
+- The third element is 1 when the characters are equal and both
 are also numerical characters and zero otherwise.
 
 ## Learning
@@ -195,10 +195,10 @@ confusion matrices on the training and testing sets.
 ```python
 >>> from sklearn.metrics import confusion_matrix
 >>> from sklearn.metrics import accuracy_score
->>> pr = m.predict(x_train[:200])
->>> accuracy_score(y_train[:200], pr)
+>>> pr = m.predict(x_train)
+>>> accuracy_score(y_train, pr)
 0.96
->>> confusion_matrix(y_train[:200], pr)
+>>> confusion_matrix(y_train, pr)
 [[96  5]
  [ 3 96]]
 ```
