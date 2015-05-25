@@ -85,7 +85,7 @@ automatically generate kitsch watercolours:
 
 ## Larger image set
 On a slightly larger set (85 images), the most interesting images
-is found in the first few eigenvectors (corresponding to the
+are found in the first few eigenvectors (corresponding to the
 largest eigenvalues):
 
 ![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_6 2.jpg "Eigenlandscape")
@@ -95,7 +95,7 @@ largest eigenvalues):
 The very last component (in the sets we tried)
 always has a different visual quality,
 reminding me a lot of some 
-[impressionistic](http://en.wikipedia.org/wiki/Houses_of_Parliament_series_(Monet)) paintings.
+[impressionist](http://en.wikipedia.org/wiki/Houses_of_Parliament_series_(Monet)) paintings.
 
 ![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_85.jpg "Eigenlandscape")
 
