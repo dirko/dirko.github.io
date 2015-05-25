@@ -10,7 +10,7 @@ health, and supply chain problems.
 ### More Information
 
 My favourite tools are Python, `sklearn`, probabilistic graphical models, 
-conditional random fields, and lately deep belief networks.
+conditional random fields, and deep belief networks.
 
 I'm also interested in natural language processing and how 
-artificial intelligence will change the world.
+artificial intelligence is changing the world.
