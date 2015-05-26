@@ -4,7 +4,8 @@ title: About
 permalink: /about/
 ---
 
-I'm a data scientist and machine learning developer working on education,
+I'm a data scientist and machine learning developer living in 
+Stellenbosch and currently work on education,
 health, and supply chain problems.
 
 ### More Information

@@ -3,17 +3,17 @@ layout: post
 title: Eigenlandscape art
 ---
 
-What happens when we run singular value decomposition (SVD) on images?
-In this post I'll show how to do SVD on images with python and
+What happens when we run [singular value decomposition (SVD)](http://en.wikipedia.org/wiki/Singular_value_decomposition)
+ on images?  In this post I'll show how to do SVD on images with python and
 some of the interesting visual effects that result.
 ![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_25.jpg "Eigenlandscape")
 
 ## Eigenfaces
 [Eigenfaces](http://en.wikipedia.org/wiki/Eigenface)
 are visualisations of the eigenvectors of the
-matrix that you get when you stack vectors representing 
+covariance matrix that you get when you stack vectors representing 
 faces together. They come up in the field of
-automatic image and face recognition.
+automatic image and face recognition. 
 
 ![Eigenfaces from scolarpedia](http://www.scholarpedia.org/w/images/thumb/6/65/Eigenfaces.jpg/250px-Eigenfaces.jpg "http://www.scholarpedia.org/article/Eigenfaces")
 
@@ -103,18 +103,32 @@ Note the horse silhouette in the center of the image above, and the
 recurring telephone poles in this set - some of the
 features are hard to dilute.
 
-## Conclusion
-There are a few more things I want to try, like 
+## Thoughts
+There are a few more things we'd want to try, like 
 
 - different ways to scale the intensities of the components,
 - different (and possibly much larger) sets of images,
 - passing the resulting images through the algorithm again (initially
  I thought you would get the same images back but after some quick
  experimentation this is not the case - and after repeating 100 times
- there is a lot of quality loss).
+ there is a lot of quality loss),
+- doing the same with small video clips (I've always wanted to 
+ generate more Spongebob episodes)
 
-A quick google search only found [this](http://www.cs.colostate.edu/~idfah/main/publications/art) similar investigation - maybe I'm not using
-the right terms?
+Then there is the question of why such interesting images emerge. 
+The resulting images are for me at least as interesting as the original photographs,
+and I have a suspicion that they will look better than a random linear combination
+of the original photos (must be tested though). 
+
+At this stage I'd like to think that there is some connection between 
+what happens in the brain and the SVD - that we somehow build up a
+prototype (archetype?) of images that is similar to how the algorithm 
+decomposes the images. Since the eigenvectors are the directions that
+the images differ most in, it could also be that these directions are
+interesting almost by definition.
+
+A quick google search only found [this](http://www.cs.colostate.edu/~idfah/main/publications/art)
+similar investigation - maybe I'm not using the right search terms?
 
 Klara also plans to paint some of the images as part of
 an ongoing study on something (ask her to explain).
