@@ -69,7 +69,7 @@ Here is my favourite painting by Ydi:
 # Real landscapes as input
 Taking about 20 of Klara's landscape photographs:
 
-![Photo](/images/2015-05-25-Eigenlandscapes/IMG_9185.jpg "Photo")
+![Photo](/images/2015-05-25-Eigenlandscapes/IMG_9185.JPG "Photo")
 
 and pushing them through 
 the algorithm gives some fascinating results:
