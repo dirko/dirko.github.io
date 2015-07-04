@@ -78,14 +78,16 @@ testing sets:
 ![Hacrf parameter sweep](/images/2015-06-11-Spelling-correction-with-pyhacrf-Part-2/hacrf_sweep.png "Hacrf parameter sweep")
 
 If we add the character transition features, we can see that the
-model overfits if the regularisation is too low. 1 looks like a 
-good value.
+model overfits if the regularisation is too low. Initially I thought
+that 1 looks like a good value, but the transition images below
+was noisy and a value of 10 made them prettier and more interpretable.
+In any case the choice of regularisation doesn't have a huge effect.
 
 ![Hacrf parameter sweep](/images/2015-06-11-Spelling-correction-with-pyhacrf-Part-2/hacrf_t_sweep.png "Hacrf parameter sweep")
 
 The model with character transitions has a 2.4% error on the final test data 
 while the simpler model achieves 2.2% error. Looks like the character
-transitions doesn't add much in this case.
+transitions don't add much in this case.
 
 ## What are the learned weights?
 
@@ -108,23 +110,25 @@ a negative weight will make the `match` state less likely.
 
 We can see that the `m` to `m`, `x` to `s`, `z` to `s`, and `i` to `b`
 transitions are associated  with the `match`ing state. It makes sense
-that `z` and `s` are interchangeable, but `i` and `b` doesn't make sense to me.
+that `z` and `s` are interchangeable, but `i` and `b` doesn't make sense to me
+yet.
 `0` to `o` also has a positive weight, which makes sense because there
 are examples in the training set such as `('0kkay', 'okay')`.
 
-Also interesting are the entries on the diagonal - where character between
-the two words stay the same. I would have guessed that this will always be
-positive but all the vowels except `u` are negative. All the other states' 
+Also interesting are the entries on the diagonal - which represents character
+matches. I would have guessed that these weights will always be
+positive, but all the vowels except `u` are negative. All the other states' 
 transition weights have to be taken into account, of course, so it isn't
 as simple as positive weights mean `match`. If the `mismatch` states' 
 weights are even larger negative values then the net effect will still be 
-towards `match`.
+to favour the `match` label.
 
 ![Hacrf parameters](/images/2015-06-11-Spelling-correction-with-pyhacrf-Part-2/hacrf_parameters_mismatch.png "Hacrf parameters")
 
 The `1`, or `non-match` state's weights contain much the same information.
 Where there was a positive weight previously there is now a negative weight
-and the other way around. One exception is `a` to `a`.
+and the other way around. One exception is `a` to `a` - I can't think
+of a specific reason why this is the case.
 
 ## Generate candidates
 
