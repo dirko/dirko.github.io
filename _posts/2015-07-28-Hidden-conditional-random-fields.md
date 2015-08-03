@@ -113,7 +113,7 @@ confusion_matrix(y_test, pred)
 >>        [ 2, 25]])
 ```
 
-From the confusion matrices it look like the model can 
+From the confusion matrices it looks like the model can 
 differentiate between the two cases, and it also looks
 like it generalised to the testing data.
 
@@ -127,12 +127,13 @@ sequence is in class 1 or class 0:
 ![Hcrf scoring examples](/images/2015-07-28-Hidden-conditional-random-fields/predicted_probabilities.png "Hcrf scoring examples")
 
 Note that the probability of class 0 is very high if the second point in
-the sequence were to be near `state2`. Note also the linear decision boundary.
+the sequence were to be near `state2`. Note also the linear decision boundary
+and the sigmoidal transition from low to high probability.
 
 ## Hyper parameters
-I also investigated how the number of hidden states and the 
+Let's investigate how the number of hidden states and the 
 initialisation of the parameters affects the final result for one
-specific synthetic training set.
+specific synthetic data set.
 
 ![Hcrf noise -10](/images/2015-07-28-Hidden-conditional-random-fields/noise10.png "Hcrf noise -10")
 ![Hcrf noise -3](/images/2015-07-28-Hidden-conditional-random-fields/noise3.png "Hcrf noise -3")
@@ -141,15 +142,18 @@ specific synthetic training set.
 The regularisation parameter has a large effect on the outcome but the 
 amount of noise doesn't seem to matter that much. The model's accuracy is
 sometimes a bit better on the training set because there aren't many examples,
-so we just got a few more easy points on the testing set.
+so we just got a few more 'easy' points on the testing set.
 
 The fact that both the training and testing accuracies are lower for lower
 values of the regularisation parameter is puzzling. Usually the training set
 accuracy is high and the testing accuracy low with low regularisation and
-the two converge as you increase the regularisation. In this case there might 
+the difference decreases as you increase the regularisation.
+
+In this case there might 
 be some numerical issues without regularisation? Or maybe it just gets stuck
 in a local optima? One way to check it would be to initialise a model with
-low regularisation with the parameters of a model that was trained with higher
-regularisation and see whether the accuracy remains high. If that is the case
+the parameters of a model that was trained with higher
+regularisation and see whether the accuracy remains high if you then 
+decrease the regularisation parameter. If that is the case
 then regularisation probably aids optimisation. I'll check that in
 a future post.
