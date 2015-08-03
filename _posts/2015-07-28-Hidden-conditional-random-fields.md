@@ -8,7 +8,8 @@ discriminative counterparts to hidden Markov models.
 
 ## HCRFs for gesture recognition
 HCRFs are also called hidden state CRFs, and were introduced as a way to
-recognise gestures. The assumption is that a gesture is made up
+[recognise gestures](http://people.csail.mit.edu/sybor/cvpr06_wang.pdf). 
+The assumption is that a gesture is made up
 out of a sequence of latent poses. 
 
 An HMM contains generative models
@@ -26,7 +27,7 @@ occur much in the training data cannot be recognised even with
 abundant evidence. I'm still figuring out how this works 
 in the hidden CRF case.
 
-## `pyhcrf` package
+## [`pyhcrf`](https://github.com/dirko/pyhcrf) package
 I toyed around with a Python implementation of HCRFs for my masters project,
 and eventually put it on Github. It was aimed at sparse text features, was
 very slow, and could only accept one one-hot encoded word per time-step.
