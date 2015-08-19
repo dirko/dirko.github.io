@@ -298,5 +298,5 @@ The noise has been smoothed out - and although we know we can't really
 trust the beliefs (many went to exactly 1.0 which we know must be impossible
 for the real marginals), at least they look usable.
 
-See the [complete notebook]() for more detail.
+See the [complete notebook](https://github.com/dirko/pyugm/blob/master/examples/Loopy%20belief%20propagation%20example.ipynb) for more detail.
 
