@@ -3,20 +3,25 @@ layout: post
 title: Haskell N-gram text generator
 ---
 
-After the excitement of the idea of 
-[character N-gram language models](),
-I played around with a simple N-gram counter and text generator in Haskell.
+[Character N-gram language models](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+is an exciting idea that looks like the direction language modelling is taking.
+[Functional programming](http://colah.github.io/posts/2015-09-NN-Types-FP/)
+is another idea that is receiving attention in the machine learning community.
+To learn more about them I'm playing around with 
+a simple N-gram counter and text generator in Haskell.
 
 ## Character level language models
 
 I like the idea of character level language models (or even byte level)
 because that is the level
-on which all our text is serialized. People are creative with text and 
+on which human language is serialized. People are creative with text and 
 things like ascii-art, novel emoticons, or neologisms and portmanteaus
 are impossible to handle with word-level systems.
 
 Ultimately I want to learn a maximum entropy model in Haskell, but I'm still
-learning the language. So here is what I have so far. 
+learning the language. So, given that N-gram language models are quite 
+powerful [already](http://nbviewer.ipython.org/gist/yoavg/d76121dfde2618422139), 
+here is what I have so far. 
 
 ## Training and generating script
 
@@ -124,7 +129,7 @@ accumulate p = map normalize (accumulated p)
 ```
 
 ## Example
-Now let's generate some Shakespear!
+Now let's read some Shakespear!
 
 ```bash
 $ cat input.txt | ./ngram count 2
@@ -151,7 +156,7 @@ Up until a point where the training data is too sparse and the default count of
 for another day).
 
 ```bash
-$ cat 5grams.txt | ./ngram apply 100 1 'The'
+$ cat input.txt | ./ngram count 5 | ./ngram apply 100 1 'The'
 ThehLJmFPpGeiPUGV$KSkjm!R:lVm
 
 fbX-jFEtwPb.GHiq.:jxLmCqQmm?;TyGMHXkFqvkjqvvheeci3ho3$ErNtKaCiSHVCSOo&ob
@@ -162,7 +167,7 @@ into uncharted territory. We have to lower the 'prior count' of unseen
 N-grams, but even so it sometimes snaps into an even gibberisher mode:
 
 ```bash
-$ cat 5grams.txt | ./ngram apply 100 0.001 'The'
+$ cat input.txt | ./ngram count 5 | ./ngram apply 100 0.001 'The'
 There we hers,
 Shall weak of gripe,
 And withou,
