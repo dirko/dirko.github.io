@@ -129,7 +129,7 @@ accumulate p = map normalize (accumulated p)
 ```
 
 ## Example
-Now let's read some Shakespear!
+Now let's read some Shakespeare!
 
 ```bash
 $ cat input.txt | ./ngram count 2
