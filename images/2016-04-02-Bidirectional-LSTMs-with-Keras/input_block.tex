@@ -1,0 +1,61 @@
+\documentclass{standalone}
+\def\xcolorversion{2.00}
+\def\xkeyvalversion{1.8}
+
+\usepackage[version=0.96]{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,automata,backgrounds,petri}
+\usepackage[latin1]{inputenc}
+\begin{document}
+\begin{tikzpicture}[node distance=0.9cm,>=stealth',bend angle=45,auto]
+  \tikzstyle{place}=[rectangle,thick,draw=none,fill=none,minimum size=6mm]
+  \tikzstyle{innode}=[rectangle,minimum height=1.05cm,draw=red!75,fill=red!20]
+  \tikzstyle{hidnode}=[draw=black!60!green!75,fill=black!60!green!20]
+  \tikzstyle{outnode}=[draw=blue!75,fill=blue!20]
+  \tikzstyle{masknode}=[draw=black!45,fill=black!20]
+  %\tikzstyle{red place}=[place,draw=red!75,fill=red!20]
+  \tikzstyle{textnode}=[draw=none,fill=none]
+  %\tikzstyle{every node}=[rectangle,thick,draw=black!75,
+  %            fill=black!20,minimum size=4mm]
+
+  \begin{scope}[yshift=-100,place/.append style={
+                yslant=-0.1,xslant=0.3},yslant=-0.1,xslant=-0.0]
+    % First net
+
+    \foreach [count=\y] \c in {-1, 1, 2 ,0, -1, 1}{
+        \foreach \x in {0,...,4}{
+            \ifnum \c<\x
+                \node [place,outnode] (out\x\y)  at (0.9*\x,0.4*\y) {};
+                \node [place,hidnode] (hid\x\y) [below of=out\x\y] {}
+                    edge [post] (out\x\y);
+                \pgfmathtruncatemacro\inlabel{\x-2}
+                \node [place,innode] (in\x\y)  
+                    [below of=hid\x\y, node distance=1.1cm] {\inlabel}
+                    edge [post] (hid\x\y);
+            \else
+                \node [place,masknode] (out\x\y)  at (0.9*\x,0.4*\y) {};
+                \node [place,masknode] (hid\x\y) [below of=out\x\y] {}
+                    edge [post] (out\x\y);
+                \node [place,innode,masknode] (in\x\y)  
+                    [below of=hid\x\y, node distance=1.1cm] {}
+                    edge [post] (hid\x\y);
+            \fi
+            %\node [place,outnode] (out\x\y)  at (0.9*\x,0.4*\y) {};
+            %\node [place,innode] (\x\y)  at (0.9*\x,0.4*\y)   {};
+        }
+        \pgfmathtruncatemacro\xend{4-1}
+        \foreach [count=\ppx] \x in {0,...,\xend}{
+            \draw[->] (hid\x\y) to (hid\ppx\y);
+        }
+    }
+    \draw [|-|] ([xshift=-10pt]in01.south west) -> 
+        node[above left,place,style={}] {$D$} ([xshift=-10pt]in01.north west) ;
+    \draw [|-|] ([xshift=-17pt]in01.south west) -> 
+        node[left,style={}] {$N$} ([xshift=-17pt]in06.south west) ;
+    \draw [|-|] ([yshift=-10pt]in01.south west) -> 
+        node[below,place,style={}] {maxlen} ([yshift=-10pt]in41.south east) ;
+
+  \end{scope}
+
+\end{tikzpicture}
+\end{document}

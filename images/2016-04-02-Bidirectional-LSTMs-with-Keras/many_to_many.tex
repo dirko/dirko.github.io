@@ -1,0 +1,109 @@
+\documentclass{standalone}
+\def\xcolorversion{2.00}
+\def\xkeyvalversion{1.8}
+
+\usepackage[version=0.96]{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,automata,backgrounds,petri}
+\usepackage[latin1]{inputenc}
+\begin{document}
+\begin{tikzpicture}[node distance=1.3cm,>=stealth',bend angle=45,auto]
+  \tikzstyle{place}=[rectangle,thick,draw=blue!75,fill=blue!20,minimum size=6mm]
+  \tikzstyle{innode}=[rectangle,minimum height=1cm,draw=red!75,fill=red!20]
+  \tikzstyle{hidnode}=[draw=black!60!green!75,fill=black!60!green!20]
+  \tikzstyle{outnode}=[draw=blue!75,fill=blue!20]
+  %\tikzstyle{red place}=[place,draw=red!75,fill=red!20]
+  \tikzstyle{textnode}=[draw=none,fill=none]
+  %\tikzstyle{every node}=[rectangle,thick,draw=black!75,
+  %            fill=black!20,minimum size=4mm]
+
+  \tikzstyle{every label}=[red]
+
+  \begin{scope}%[yshift=-100,every node/.append style={
+               % yslant=0.1,xslant=-0.3},yslant=0.1,xslant=-0.3]
+    % First net
+    \node [place,outnode] (out1)                 {};
+    \node [textnode] (outl1) [above of=out1,node distance=0.6cm] {I-ORG};
+    \node [place,hidnode] (hid1) [below of=out1] {}
+        edge [post] (out1);
+    \node [place,innode] (in1)  [below of=hid1] {}
+        edge [post] (hid1);
+    \node [textnode] (inl1) [below of=in1,node distance=0.8cm] {U.N.};
+
+    \node [place,outnode] (out2) [right of=out1] {};
+    \node [textnode] (outl2) [above of=out2,node distance=0.6cm] {O};
+    \node [place,hidnode] (hid2) [below of=out2] {}
+        edge [post] (out2)
+        edge [pre] (hid1);
+    \node [place,innode] (in2)  [below of=hid2] {}
+        edge [post] (hid2);
+    \node [textnode] (inl2) [below of=in2,node distance=0.8cm] {official};
+
+    \node [place,outnode] (out3) [right of=out2] {};
+    \node [textnode] (outl3) [above of=out3,node distance=0.6cm] {I-PER};
+    \node [place,hidnode] (hid3) [below of=out3] {}
+        edge [post] (out3)
+        edge [pre] (hid2);
+    \node [place,innode] (in3)  [below of=hid3] {}
+        edge [post] (hid3);
+    \node [textnode] (inl3) [below of=in3,node distance=0.8cm] {Ekeus};
+
+    \node [place,outnode] (out4) [right of=out3] {};
+    \node [textnode] (outl4) [above of=out4,node distance=0.6cm] {O};
+    \node [place,hidnode] (hid4) [below of=out4] {}
+        edge [post] (out4)
+        edge [pre] (hid3);
+    \node [place,innode] (in4)  [below of=hid4] {}
+        edge [post] (hid4);
+    \node [textnode] (inl4) [below of=in4,node distance=0.8cm] {heads};
+
+    \node [place,outnode] (out5) [right of=out4] {};
+    \node [textnode] (outl5) [above of=out5,node distance=0.6cm] {O};
+    \node [place,hidnode] (hid5) [below of=out5] {}
+        edge [post] (out5)
+        edge [pre] (hid4);
+    \node [place,innode] (in5)  [below of=hid5] {}
+        edge [post] (hid5);
+    \node [textnode] (inl5) [below of=in5,node distance=0.8cm] {for};
+
+    \node [place,outnode] (out6) [right of=out5] {};
+    \node [textnode] (outl6) [above of=out6,node distance=0.6cm] {I-LOC};
+    \node [place,hidnode] (hid6) [below of=out6] {}
+        edge [post] (out6)
+        edge [pre] (hid5);
+    \node [place,innode] (in6)  [below of=hid6] {}
+        edge [post] (hid6);
+    \node [textnode] (inl6) [below of=in6,node distance=0.8cm] {Baghdad};
+
+    \node [place,outnode] (out7) [right of=out6] {};
+    \node [textnode] (outl7) [above of=out7,node distance=0.6cm] {O};
+    \node [place,hidnode] (hid7) [below of=out7] {}
+        edge [post] (out7)
+        edge [pre] (hid6);
+    \node [place,innode] (in7)  [below of=hid7] {}
+        edge [post] (hid7);
+    \node [textnode] (inl7) [below of=in7,node distance=0.8cm] {.};
+
+    %\node [place] (e1) [left of=c1] {}
+    %  edge [pre,bend left]                  (w1)
+    %  edge [post,bend right]                (s)
+    %  edge [post]                           (c1);
+
+    %\node [transition] (e2) [left of=c2] {}
+    %  edge [pre,bend right]                 (w2)
+    %  edge [post,bend left]                 (s)
+    %  edge [post]                           (c2);
+
+    %\node [transition] (l1) [right of=c1] {}
+    %  edge [pre]                            (c1)
+    %  edge [pre,bend left]                  (s)
+    %  edge [post,bend right] node[swap] {2} (w1);
+
+    %\node [transition] (l2) [right of=c2] {}
+    %  edge [pre]                            (c2)
+    %  edge [pre,bend right]                 (s)
+    %  edge [post,bend left]  node {2}       (w2);
+  \end{scope}
+
+\end{tikzpicture}
+\end{document}

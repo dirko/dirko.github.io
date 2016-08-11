@@ -1,0 +1,98 @@
+\documentclass{standalone}
+\def\xcolorversion{2.00}
+\def\xkeyvalversion{1.8}
+
+\usepackage[version=0.96]{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,automata,backgrounds,petri,shapes.multipart}
+\usepackage[latin1]{inputenc}
+\begin{document}
+\begin{tikzpicture}[node distance=1.3cm,>=stealth',bend angle=45,auto]
+  \tikzstyle{place}=[rectangle,thick,minimum size=6mm]%,draw=blue!75,fill=blue!20,minimum size=6mm]
+  \tikzstyle{innode}=[rectangle,minimum height=1cm,draw=red!75,fill=red!20]
+  \tikzstyle{hidnode}=[draw=black!60!green!75,fill=black!60!green!20]
+  \tikzstyle{hidbacknode}=[draw=black!70!green!75,fill=black!70!green!40]
+  \tikzstyle{outnode}=[draw=blue!75,fill=blue!20]
+  \tikzstyle{catnode}=[rectangle split,rectangle split parts=2,
+                       rectangle split horizontal,
+                       rectangle split part fill={black!70!green!40,
+                                                  black!60!green!20},
+                       draw=black!60!green!75,
+                       minimum height=0.2cm]
+  \tikzstyle{masknode}=[draw=black!45,fill=black!20]
+  %\tikzstyle{red place}=[place,draw=red!75,fill=red!20]
+  \tikzstyle{textnode}=[draw=none,fill=none]
+  %\tikzstyle{every node}=[rectangle,thick,draw=black!75,
+  %            fill=black!20,minimum size=4mm]
+
+  \tikzstyle{every label}=[red]
+
+  \begin{scope}%[yshift=-100,every node/.append style={
+               % yslant=0.1,xslant=-0.3},yslant=0.1,xslant=-0.3]
+    % First net
+
+    \foreach \x in {0,...,4}{
+        \pgfmathtruncatemacro\forwardlabel{\x-2}
+        \pgfmathtruncatemacro\backwardlabel{2-\x}
+        \ifnum \x>2
+            \node [place,outnode] (out\x) at (1.4*\x,0.0)  {};
+            \node [place,catnode] (con\x) [below of=out\x] {}
+                edge [post] (out\x);
+
+            \node [place,masknode] (hid\x) [below of=con\x] {};
+            \node [place,masknode] (in\x)  [below of=hid\x] {}
+                edge [post] (hid\x);
+
+            \node [place,hidbacknode] (hidb\x) [below of=in\x] {}
+                edge [post,bend left] (con\x);
+            \node [place,innode] (inb\x)  [below of=hidb\x] {\forwardlabel}
+                edge [post] (hidb\x);
+        \else
+        \ifnum \x>1
+            \node [place,outnode] (out\x) at (1.4*\x,0.0)  {};
+            \node [place,catnode] (con\x) [below of=out\x] {}
+                edge [post] (out\x);
+
+            \node [place,hidnode] (hid\x) [below of=con\x] {};
+            \node [place,innode] (in\x)  [below of=hid\x] {\backwardlabel}
+                edge [post] (hid\x);
+
+            \node [place,hidbacknode] (hidb\x) [below of=in\x] {}
+                edge [post,bend left] (con\x);
+            \node [place,innode] (inb\x)  [below of=hidb\x] {\forwardlabel}
+                edge [post] (hidb\x);
+        \else
+            \node [place,masknode] (out\x) at (1.4*\x,0.0)  {};
+            \node [place,catnode,masknode] (con\x) [below of=out\x] {}
+                edge [post] (out\x);
+
+            \node [place,hidnode] (hid\x) [below of=con\x] {};
+                %edge [post] (con\xfend);
+            \node [place,innode] (in\x)  [below of=hid\x] {\backwardlabel}
+                edge [post] (hid\x);
+
+            \node [place,masknode] (hidb\x) [below of=in\x] {}
+                edge [post,bend left] (con\x);
+            \node [place,masknode] (inb\x)  [below of=hidb\x] {}
+                edge [post] (hidb\x);
+        \fi
+        \fi
+    }
+    \foreach \x in {0,...,1}{
+        \pgfmathtruncatemacro\xfend{4-\x}
+        \draw[->,bend left=3] (hid\x) to (con\xfend.south east);
+    }
+    \draw[->] (hid2) to (con2);
+    \foreach \x in {3,...,4}{
+        \pgfmathtruncatemacro\xfend{4-\x}
+        \draw[->,bend right=3] (hid\x) to (con\xfend.south east);
+    }
+    \foreach [count=\ppx] \x in {0,...,3}{
+        \draw[->] (hid\x) to (hid\ppx);
+        \draw[->] (hidb\x) to (hidb\ppx);
+    }
+
+  \end{scope}
+
+\end{tikzpicture}
+\end{document}
