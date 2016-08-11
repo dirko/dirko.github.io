@@ -113,21 +113,21 @@ set the character window size to 10; and the embedding dimension also to 10.
 (We plot only the training accuracy because we're interested in the optimiser
 performance and not yet in how well the model generalises.)
 
-![Nesterov batch sizes](/images/2016-01-28-Chainer-character-embeddings/nesterovM10H10.png "Nesterov batch sizes")
+![wide](/images/2016-01-28-Chainer-character-embeddings/nesterovM10H10.png "Nesterov batch sizes")
 
 ### Different optimisers
 Now we can 
 compare the different optimizers' out-of-the-box performance with a 
 minibatch size of 256.
 
-![Optimisers](/images/2016-01-28-Chainer-character-embeddings/optimisersM10H10.png "Optimisers")
+![wide](/images/2016-01-28-Chainer-character-embeddings/optimisersM10H10.png "Optimisers")
 
 Looks like the three front runners are `Adam`, `RMSPropGraves`, and `NesterovAG`.
 
 ## Embedding dimensions
 Now we can experiment with a few different hidden layer sizes and window sizes.
 
-![H and M](/images/2016-01-28-Chainer-character-embeddings/hiddensMsAdam.png "H and M")
+![wide](/images/2016-01-28-Chainer-character-embeddings/hiddensMsAdam.png "H and M")
 
 As the window size increases the next character is more accurately predicted.
 A hidden layer size of 40, however, gives better accuracy after 300 seconds 

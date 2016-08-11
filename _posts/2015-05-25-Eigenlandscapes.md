@@ -6,7 +6,7 @@ title: Eigenlandscape art
 What happens when we run [singular value decomposition (SVD)](http://en.wikipedia.org/wiki/Singular_value_decomposition)
  on images?  In this post I'll show how to do SVD on images with python and
 some of the interesting visual effects that result. </p>
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_25.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_25.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 ## Eigenfaces
 [Eigenfaces](http://en.wikipedia.org/wiki/Eigenface)
@@ -60,44 +60,44 @@ plt.imshow(ef[6].reshape((155, 234, 3)))
 The resulting image (shown below) reminds me a lot of some of 
 [Ydi Coetsee's](http://www.ydicoetsee.com/) work.
 
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_6.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_6.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 Here is my favourite painting by Ydi:
 
-![Painting](/images/2015-05-25-Eigenlandscapes/IMGP0539.jpg "Painting")
+<img src="/images/2015-05-25-Eigenlandscapes/IMGP0539.jpg" alt="Painting" style="width: 100%;"/>
 
 # Real landscapes as input
 Taking about 20 of Klara's landscape photographs:
 
-![Photo](/images/2015-05-25-Eigenlandscapes/IMG_9185.JPG "Photo")
+<img src="/images/2015-05-25-Eigenlandscapes/IMG_9185.JPG" alt="Photo" style="width: 100%;"/>
 
 and pushing them through 
 the algorithm gives some fascinating results:
 
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_7.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_7.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_10.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_10.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 It seems that we also inadvertently discovered a way to 
 automatically generate kitsch watercolours:
 
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_29.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_29.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 ## Larger image set
 On a slightly larger set (85 images), the most interesting images
 are found in the first few eigenvectors (corresponding to the
 largest eigenvalues):
 
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_6 2.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_6 2.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_9.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_9.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 The very last component (in the sets we tried)
 always has a different visual quality,
 reminding me a lot of some 
 [impressionist](http://en.wikipedia.org/wiki/Houses_of_Parliament_series_(Monet)) paintings.
 
-![Eigenlandscape](/images/2015-05-25-Eigenlandscapes/output_85.jpg "Eigenlandscape")
+<img src="/images/2015-05-25-Eigenlandscapes/output_85.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 Note the horse silhouette in the center of the image above, and the
 recurring telephone poles in this set - some of the

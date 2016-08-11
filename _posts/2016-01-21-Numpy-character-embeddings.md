@@ -203,7 +203,7 @@ anim.save('embeddings.gif', writer='imagemagick', fps=32);
 ```
 
 (_The first two componenents of each character embedding as training processes:_)
-![Training](/images/2016-01-21-Numpy-character-embeddings/embeddings.gif "Embeddings")
+<img src="/images/2016-01-21-Numpy-character-embeddings/embeddings.gif" alt="Embeddings" style="width: 100%;"/>
 
 ## Generate
 
