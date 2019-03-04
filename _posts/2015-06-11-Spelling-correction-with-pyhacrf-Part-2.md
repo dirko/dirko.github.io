@@ -2,10 +2,9 @@
 layout: post
 title: Spelling correction with pyhacrf - Part 2
 ---
-*Continues from [Spelling correction with pyhacrf]
-(/Spelling-correction-with-pyhacrf/).* </p>
+*Continues from [Spelling correction with pyhacrf](/Spelling-correction-with-pyhacrf/).* 
 In this post I'll look in more detail at how 
-[`pyhacrf`] (https://github.com/dirko/pyhacrf) can
+[`pyhacrf`](https://github.com/dirko/pyhacrf) can
 be used to generate spelling corrections for incorrect tokens.
 We'll use cross-validation to set the regularisation
 parameter, add character transition features, and compare
