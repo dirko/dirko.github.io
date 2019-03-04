@@ -4,8 +4,7 @@ title: Spelling correction with pyhacrf
 ---
 
 In this post I'll describe how to generate suggestions for 
-incorrectly spelled words using the [`pyhacrf`]
-(https://github.com/dirko/pyhacrf) package.
+incorrectly spelled words using the [`pyhacrf`](https://github.com/dirko/pyhacrf) package.
 `pyhacrf` implements the Hidden Alignment Conditional
 Random Field (HACRF) model in python with a `sklearn`-like
 interface. 
@@ -26,8 +25,7 @@ and we cannot further choose between the candidates.
 A solution is to generalise the Levenshtein distance. Two possible
 generalisations are:
 
-- [*Weighted finite state transducers (WFSTs)*]
-(http://en.wikipedia.org/wiki/Finite_state_transducer) 
+- [*Weighted finite state transducers (WFSTs)*](http://en.wikipedia.org/wiki/Finite_state_transducer) 
 The Levenshtein distance is a special case of a WFST 
 where every transition has a weight of 1. Different 
 transitions can have different weights, 
@@ -35,8 +33,7 @@ however. That allows the difference between `kat` and `cat` to
 be 0.3 while `kat` to `hat` is 1.0 for example. These weights
 can be learned from examples.
 
-- [*Hidden alignment conditional random field (HACRF)*]
-(http://people.cs.umass.edu/~mccallum/papers/crfstredit-uai05.pdf)
+- [*Hidden alignment conditional random field (HACRF)*](http://people.cs.umass.edu/~mccallum/papers/crfstredit-uai05.pdf)
 (or see my [thesis](http://scholar.sun.ac.za/handle/10019.1/96064)
 on the use of the model for noisy text normalization)
 This model can classify pairs as *matching* or *non-matching*. For example it
@@ -58,7 +55,7 @@ Here are the first few examples of matching word pairs:
  ('0neee', 'one'),
  ('0r', 'or'),
  ('1s', 'once')]
-```
+``` 
 
 Because our model also needs examples of pairs that does not match,
 we generate non-matching pairs by randomly combining incorrectly
@@ -70,7 +67,7 @@ spelled words and correctly spelled words:
  ('kall', 'hit'),
  ('backkk', 'transfered'),
  ('bihg', 'morning')]
-```
+``` 
 
 In the end we thus have 3974 positive examples and 3974 negative examples.
 
@@ -84,11 +81,11 @@ to positions in the lattice that summarise the different alignments.
 For the example pair `('1s', 'once')` we can visualize all 
 alignments as:
 
-```
+``` 
 s . . . .        s (1, 0) (1, 1) (1, 2) (1, 3)
 1 . . . .   or   1 (0, 0) (0, 1) (0, 2) (0, 3)
   o n c e            o      n      c      e
-```
+``` 
 
 The model associates energy to each lattice position and lattice
 transition by taking the inner product between a feature vector and
@@ -113,7 +110,7 @@ and outputs a list of `ndarray`s:
 ```python
 fe = StringPairFeatureExtractor(match=True, numeric=True)
 x = fe.fit_transform(x_raw)
-```
+``` 
 
 where `x` now contains arrays of shapes:
 
@@ -125,7 +122,7 @@ where `x` now contains arrays of shapes:
     ...
  (7, 7, 3),
  (5, 10, 3)]
-```
+``` 
 Each example is now an `ndarray` that is filled 
 with ones and zeros:
 
@@ -150,7 +147,7 @@ array([[[ 1.,  0.,  0.],
         [ 1.,  0.,  0.],
         [ 1.,  0.,  0.],
         [ 1.,  1.,  0.]]])
-```
+``` 
 
 The feature vector for each lattice position
 has three dimensions (if we were to unstack them). 
@@ -169,7 +166,7 @@ The training labels are just a list of strings:
 ```python
 >>> y
 ['match', 'mismatch', ... 'mismatch']
-```
+``` 
 We can now learn a model:
 
 ```python
@@ -185,7 +182,7 @@ Iteration  Log-likelihood |gradient|
                 ...
        410     -19.51   0.007586
        415     -19.51   0.002551
-```
+``` 
 
 ## Evaluation
 
@@ -201,7 +198,7 @@ confusion matrices on the training and testing sets.
 >>> confusion_matrix(y_train, pr)
 [[96  5]
  [ 3 96]]
-```
+``` 
 
 And the final performance on the test set is:
 
@@ -212,7 +209,7 @@ And the final performance on the test set is:
 >>> confusion_matrix(y_test, pr)
 [[571  39]
  [ 19 561]]
-``` 
+```  
 
 It looks like the model has generalized well 
 (the test and training scores are similar) and can differentiate
@@ -238,11 +235,11 @@ pr = m.predict_proba(x_test)
 candidate_scores = zip(pr, test_pairs)
 candidate_scores = sorted(candidate_scores, key=lambda x: -x[0][0])
 print candidate_scores[:10]
-```
+``` 
 
 which produces
 
-```
+``` 
 [(array([ 0.99492903,  0.00507097]), ('ses', 'she')),
  (array([ 0.99460332,  0.00539668]), ('ses', 'seems')),
  (array([ 0.98942973,  0.01057027]), ('ses', 'sheesh')), 
@@ -253,7 +250,7 @@ which produces
  (array([ 0.97687055,  0.02312945]), ('ses', 'shine')), 
  (array([ 0.97687055,  0.02312945]), ('ses', 'space')), 
  (array([ 0.97633783,  0.02366217]), ('ses', 'says'))]
-```
+``` 
 
 The correct token is 'uses', which it doesn't get in the top ten
 candidates. Here are, for a few other words, 
