@@ -2,7 +2,7 @@
 layout: post
 title: Spelling correction with pyhacrf - Part 2
 ---
-*Continues from [Spelling correction with pyhacrf](/Spelling-correction-with-pyhacrf/).* 
+(*Continues from [Spelling correction with pyhacrf](/Spelling-correction-with-pyhacrf/).*)
 In this post I'll look in more detail at how 
 [`pyhacrf`](https://github.com/dirko/pyhacrf) can
 be used to generate spelling corrections for incorrect tokens.

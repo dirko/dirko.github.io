@@ -2,8 +2,7 @@
 layout: post
 title: Numpy character embeddings
 ---
-*Continues from [Embedding derivative derivation]
-(/Embedding-derivative-derivation/).* </p>
+*(Continues from [Embedding derivative derivation](/Embedding-derivative-derivation/).)* 
 Let's implement the embedding model in `numpy`, train it on some 
 characters, generate some text, and plot two of the components over time.
 

@@ -8,8 +8,7 @@ model and then you have to do the derivation yourself. This derivation
 is for
 a simple two-layer model where the input layer is followed by an embedding 
 layer which is followed by a fully connected softmax layer. It is based on
-some [old and new matrix algebra (and calculus) useful for statistics]
-(http://research.microsoft.com/en-us/um/people/minka/papers/matrix/).
+some [old and new matrix algebra (and calculus) useful for statistics](http://research.microsoft.com/en-us/um/people/minka/papers/matrix/).
 
 ## Softmax model
 

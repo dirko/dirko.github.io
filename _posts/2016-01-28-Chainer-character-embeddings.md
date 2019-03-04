@@ -2,8 +2,7 @@
 layout: post
 title: Chainer character embeddings
 ---
-*Continues from [Numpy character embeddings]
-(/Numpy-character-embeddings/).* </p>
+*(Continues from [Numpy character embeddings](/Numpy-character-embeddings/).*)
 The `numpy` embedding model turned out to be extremely slow because
 it wasn't vectorised. [`Chainer`](http://chainer.org/) is a python deep learning 
 package that enables us to
