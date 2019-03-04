@@ -5,7 +5,7 @@ title: Eigenlandscape art
 
 What happens when we run [singular value decomposition (SVD)](http://en.wikipedia.org/wiki/Singular_value_decomposition)
  on images?  In this post I'll show how to do SVD on images with python and
-some of the interesting visual effects that result. </p>
+some of the interesting visual effects that result. 
 <img src="/images/2015-05-25-Eigenlandscapes/output_25.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 ## Eigenfaces
