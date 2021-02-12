@@ -60,15 +60,15 @@ where $$a$$, $$b$$, and $$c$$ are constants,
 $$g$$ is a binary (takes two terms) function symbol, and $$f$$ also. 
 Usually I would think of $$f$$ or $$g$$ as taking two arguments, but it seems 
 the word "argument" is carefully avoided in the wikipedia article, so maybe 
-they only become "arguments" when assigned semantics.
+they only become arguments when assigned semantics.
 Prolog talks about terms as function arguments though.
 
 ## Termination
 A system is *terminating* if there are no sequences of derivations that are infinite.
-For example, if there are two rules that just rearrange things then it is possible 
-to use those rules for ever.
+For example, if you had to put back two white beans if you took out two black beans and 
+vice versa, then it is possible to use those rules forever.
 
-The urn example, on the other hand, is terminating since the number of beans decrease 
+The original urn example, on the other hand, is terminating since the number of beans decreases 
 every round.
 
 A *termination function* can be used to characterise terminating systems.
@@ -88,7 +88,7 @@ I repeat them here each with an example.
  A homomorphism is a map (basically a function) between two sets so that operations 
   (stuff like addition and multiplication but the algebraic abstractions) are preserved.
   For example, in our case, a homomorphism from terms to the natural numbers would be 
-  the size (number of symbols), and depth (how nested the terms are).
+  the size (number of symbols), or depth (how nested the terms are).
   A well-founded set is the normal set in ZFC, a set that does not contain infinitely 
   nested sets. For example $$\{\{a\}, \{b\}\}$$ is well founded, but $$\{\{\dots, a\}, \{b\}\}$$ 
   is not if the dots represent an infinitely deep recursion. The natural numbers are well-founded.
@@ -97,7 +97,7 @@ I repeat them here each with an example.
  (e.g. natural numbers). A homomorphism is monotonic with respect to the ordering if the value 
  it assigns to a term $$f(\dots s \dots)$$ is greater than the value it assigns to $$f(\dots t \dots)$$ 
  if the value of $$s$$ is greater than $$t$$. 
- For example, size has this property: $$f(g(a,b),c)$$ has 4 symbols, and $$f(g(h(a,b)),c)$$ has 5, so 
+ For example, size (number of symbols) has this property: $$f(g(a,b),c)$$ has 4 symbols, and $$f(g(h(a,b)),c)$$ has 5, so 
  the latter is larger than the former. 
  But the first subterm of each $$g(a,b)$$ has 3 and $$g(h(a,b))$$ has 4, so whenever these subterms are 
  larger, the terms are larger also.
@@ -107,7 +107,7 @@ I repeat them here each with an example.
  The previous function allowed outer terms to be equal or larger if the inner terms were larger.
 - A constant function.
 
-These conditions define a whole set of possible functions that can be used as termination functions.
+These conditions define a whole range of possible functions that can be used as termination functions.
 
 Now we use these functions to define a *path ordering*:
 Let $$\tau_0 \dots \tau_k$$ each be a (possibly different) termination function.
@@ -119,7 +119,7 @@ if either of the following conditions hold:
 1. $$s_i \succeq t$$ for some $$s_i$$, or
 2. $$s \succ t_1,\dots,t_n$$ and $$\langle \tau_1(s),\dots,\tau_k(s) \rangle$$ is lexicographically 
  greater or equal to $$\langle \tau_1(t),\dots,\tau_k(t) \rangle$$, in other words if
- the first elements are greater, or if greater or equal, the second elements and so forth.
+ the first elements are greater, or if equal (not greater and not smaller), the second elements and so forth.
  
 Dershowitz remarks that this definition combines syntactic (the first three types of termination functions)
 and semantic considerations (the others).
@@ -133,29 +133,53 @@ Firstly, if at least one of its subterms succeeds the function symbol of the oth
 Secondly, if its function symbol succeeds all the subterms of the other term and 
 the first few termination functions of the term succeeds that of the other term.
 
-For example, let us compare $$s=f(g(a,b),c)$$ and $$t=f(g(a,c),c)$$ using two 
+For example, let us compare $$s=g(a,b)$$ and $$t=g(a,c)$$ using two 
 termination functions, $$\tau_1$$ is the number of symbols homomorphism,
 and $$\tau_2$$ a function that returns the second subterm of $$g$$.
 
 We now recursively evaluate the conditions:
 1. Does a subterm of $$s$$ succeed $$t$$?
-    - Does $$g(a,b)$$ succeed $$f(g(a,c),c)$$?
-        1. Does a subterm of $$g(a,b)$$ succeed $$f(g(a,c,),c)$$?
-            - Does $$a$$ succeed $$f(g(a,c,),c)$$?
-                1. No subterms
-                2. Does $$a$$ succeed all subterms $$g(a,c)$$ and $$c$$? No -- $$a\nsucc c$$.
-            - Does $$b$$ succeed $$f(g(a,c,),c)$$?
-                1. No subterms
-                2. Does $$c$$ succeed all subterms $$g(a,c)$$ and $$c$$? No -- $$c\nsucc c$$.
-        2. Does $$g(a,b)$$ succeed $$g(a,c)$$ and $$c$$ and is $$\lanble \tau_1(s), tau_2(s) \rangle \succeq \lanble \tau_1(t), tau_2(t) \rangle $$??
-    - Does $$c$$ succeed $$f(g(a,c),c)$$?
-2. Does $$s$$ succeed subterms of $$t$$ and is $$\lanble \tau_1(s), tau_2(s) \rangle \succeq \lanble \tau_1(t), tau_2(t) \rangle $$?
+    - Does $$a$$ succeed $$g(a,c)$$?
+        1. No subterms.
+        2. Does $$a$$ succeed $$a$$ and $$c$$? No, $$a\nsucc a$$.
+    - Does $$b$$ succeed $$g(a,c)$$?
+        1. No subterms.
+        2. Does $$b$$ succeed $$a$$ and $$c$$? No, $$b\nsucc c$$.
+2. Does $$s$$ succeed $$a$$ and $$c$$ and is $$\langle \tau_1(s), tau_2(s) \rangle \succeq \langle \tau_1(t), tau_2(t) \rangle $$?
+    - Does $$g(a,b)$$ succeed $$a$$?
+        1. Does a subterm of $$g(a,b)$$ succeed $$a$$? Yes -- $$b\succ a$$.
+    - Does $$g(a,b)$$ succeed $$c$$?
+        1. Does a subterm of $$g(a,b)$$ succeed $$a$$? No -- neither $$a$$ nor $$b$$ succeeds $$c$$.
+    - We do not even have to check the termination functions in this case as none of the conditions are met.
 
+We now have an ordering on terms. With that, the following theorem can be stated:
+A rewrite system terminates if $$l \sigma \succ r \sigma$$, in the path ordering $$\succ$$,
+for all rules $$l \rightarrow r$$, and also $$\tau(l \sigma) = \tau(r \sigma)$$ for each 
+of the nonmonotonic homomorphisms among its termination functions.
+
+In other words, first we do any substitution on each rule by substituting the variables in the left-hand side of the 
+rule with something concrete, and then do the same substitution on the right-hand side.
+If the right-hand side now precedes (is smaller than) the right hand side, it means that 
+each time the rule is applied, the value of the resulting term will be smaller than 
+previously and so it must eventually get to the minimum value and terminate.
+The second condition states that the value assigned to both sides of the rule must neither be smaller or larger
+after the substitution for some of the termination functions. 
+Remember that the monotonic homomorphisms are the first $$\tau_1,\dots,\tau_{i-1}$$ functions,
+so the nonmonotonic homomorphisms must be some of the last substitution functions used 
+in the lexicographical comparison. 
+It is not clear to me at the moment why this condition is necessary, but I assume it 
+will become clear when delving into the proof of the theorem, which I will not go into now.
+
+So for example, for the rule $$g(x,c) \rightarrow g(x,a)$$, where $$x$$ is a variable, and the termination functions 
+as in the example above, it doesn't matter what we set $$x$$ to, the value of the right-hand side 
+will decrease since the second argument to $$g$$ decreases from $$c$$ to $$a$$.
+
+A system can therefore be proven to terminate if we can find termination functions 
+so that applying any rule decreases the value of the result in the path ordering.
 
 ## Conclusion
 
-For now, I don't have time or space to go into the rest of the paper that 
-introduces
+The paper further discusses
 Confluence,
 Completion,
 Validity,
@@ -164,3 +188,4 @@ Associativity and Commutativity,
 Conditional Rewriting,
 Programming, and
 Theorem Proving.
+I can post about this another day.
