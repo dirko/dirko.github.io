@@ -5,7 +5,9 @@ title: Loopy glitches
 
 While developing a loopy belief propagation library I came across a bug that produced
 this interesting image. 
-<img src="/images/2019-03-06-Loopy-glitches/lbp_small.png" alt="Loopy belief propagation glitch image" style="width: 45%"/>
+<div style="overflow:hidden;">
+   <img src="/images/2019-03-06-Loopy-glitches/lbp_small.png" alt="Loopy belief propagation glitch image" style=" clip-path: inset(0px 2.0px);width:45%" />
+</div>
 
 The code that generated the glitch can be found [here](https://github.com/dirko/pyugm/commit/10f084e4ad9e03c86b3cac5cd488a2d2bfad7eee) 
 (and the fix [here](https://github.com/dirko/pyugm/commit/633d5322287838aaa6fb64f6e8988313788d9420)). I was trying to do 
