@@ -35,7 +35,7 @@ we need to vectorise the vectoriseable. This means that examples must be fed
 into the network in mini-batches.
 
 The problem with this is of course that sequences are different lengths 
-- which is exactly why we are using RNNs in the first place - we want to be
+- which is exactly why we are using RNNs in the first place---we want to be
 able to handle any length input.
 
 There are a few ways to get variable length sequences *and* vectorisation.
@@ -83,7 +83,7 @@ information from the present and the past. But what if the next element
 For example if the current word is `new` then it is probably not a named 
 entity, except if the next word is `york`.
 
-Once again there are different ways to do this - you can do a pass through the
+Once again there are different ways to do this---you can do a pass through the
 sequence before labelling, or you can have RNNs going forward
 and backwards simultaneously as with a BiRNN. 
 
@@ -102,7 +102,7 @@ It seems to me that there are two ways to think about it:
   (which is passed through to Theano/TF) on one of the passes. 
   This implementation depends on [how exactly masking works with
   `go_backward`](https://github.com/fchollet/keras/issues/1057)
-  (which still confuses me - maybe someone can explain to 
+  (which still confuses me---maybe someone can explain to 
   me to the current state of `go_backward` with masking?). 
 - The user must supply both normal and reversed inputs. The disadvantage here
   is that our input data size is doubled.
@@ -188,7 +188,7 @@ model.fit([X_train_f, X_train_b], y_train, batch_size=batch_size)`
 
 Some other things that I want to explore:
 
- - getting the hang of `go_backwards` - it might simplify the model by making it
+ - getting the hang of `go_backwards`---it might simplify the model by making it
  'stackable' (make it behave like a layer so we can stack a few together to 
  create a deep BiRNN). 
  It would probably need a lambda layer before the backwards RNN to
@@ -201,5 +201,5 @@ Next I'll post the results of some experiments on the
 [CoNLL named entity](http://www.cnts.ua.ac.be/conll2003/ner/) task.
 
 *Thanks for all @fchollet and the multitude of people working on Keras! 
-(and Theano, and Tensorflow, and Python - opensource is amazing)*
+(and Theano, and Tensorflow, and Python---opensource is amazing)*
 

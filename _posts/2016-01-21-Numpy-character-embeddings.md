@@ -134,7 +134,7 @@ too slow to take seriously)
 
 # Training
 
-Now we decide on our embedding size - in our case 5 - and get an initial
+Now we decide on our embedding size---in our case 5---and get an initial
 random parameter vector.
 
 ```python
@@ -261,8 +261,8 @@ The model (which is trained on a small piece of Shakespeare) gives:
     S Rosg- folbel, sheron 
 
 Unfortunately the implementation is very slow to train. This means that 
-we are restricted to small N-grams and small embedding dimensions - 
-which means that it's not going to work very well. 
+we are restricted to small N-grams and small embedding 
+dimensions---which means that it's not going to work very well. 
 
 I can try to optimise the implementation to run faster but next 
 I'll rather try to implement the same model with `chainer` to show how

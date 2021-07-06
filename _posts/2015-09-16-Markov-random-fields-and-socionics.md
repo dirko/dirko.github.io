@@ -17,8 +17,9 @@ to set up a fun application/demonstration of Markov random fields.
 ## Personality profiles
 These personality theories are often
 discredited as unscientific or useless (with the possible exception 
-of the [big five](https://en.wikipedia.org/wiki/Big_Five_personality_traits)
- - also see IBM's 
+of the 
+[big five](https://en.wikipedia.org/wiki/Big_Five_personality_traits)---also 
+see IBM's 
 [showcase](https://watson-pi-demo.mybluemix.net/) of an automatic 
 personality profiler that takes English text as input and spits out a 
 profile of the author), but online interest seems to keeps the debate
@@ -34,7 +35,7 @@ posits that there are 4 ways that people process information
 (**F**)eeling, (**S**)ensing, (**T**)hinking,
 and i(**N**)tuition. Each of these
 *functions* are further divided into (**i**)ntroverted and (**e**)xtraverted
-functions - depending on whether they are directed inward of outward.
+functions---depending on whether they are directed inward of outward.
 
 #### Elements
 We now end up with 8 information *elements*:
@@ -190,7 +191,7 @@ factors.extend(prob_has('Ako', ('Ni', 1.5), ('Ti', 1.2),
 ```
 
 At the moment each person has two factors that are completely
-unconnected - they don't share any variables. But we know that
+unconnected---they don't share any variables. But we know that
 the first two elements and a person's type are deterministically
 tied. Let's therefore add another factor for each person to
 capture the dependence between the `function` and `type` variables:

@@ -114,7 +114,7 @@ yet.
 `0` to `o` also has a positive weight, which makes sense because there
 are examples in the training set such as `('0kkay', 'okay')`.
 
-Also interesting are the entries on the diagonal - which represents character
+Also interesting are the entries on the diagonal---which represents character
 matches. I would have guessed that these weights will always be
 positive, but all the vowels except `u` are negative. All the other states' 
 transition weights have to be taken into account, of course, so it isn't
@@ -126,7 +126,7 @@ to favour the `match` label.
 
 The `1`, or `non-match` state's weights contain much the same information.
 Where there was a positive weight previously there is now a negative weight
-and the other way around. One exception is `a` to `a` - I can't think
+and the other way around. One exception is `a` to `a`---I can't think
 of a specific reason why this is the case.
 
 ## Generate candidates
@@ -167,12 +167,12 @@ performance. This might be because the model is overfitting,
  and regularisation isn't really helping. 
 
 I only afterwards realised that we have (many) more
-parameters than training examples - about 4 000 parameters per state and
+parameters than training examples---about 4 000 parameters per state and
 transition 
-(granted that only about `26 x 26 = 729` - the alphabet transitions - 
+(granted that only about `26 x 26 = 729`---the alphabet transitions---
 are usually triggered). 
 There are 2 states and 3 transitions per state, which gives about
-`8 x 4 000 = 32 000` parameters while we have only 6 000 examples -
+`8 x 4 000 = 32 000` parameters while we have only 6 000 examples---
 Always count the parameters!
 
 There are a few things to try:

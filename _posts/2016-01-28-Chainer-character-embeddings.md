@@ -7,7 +7,7 @@ The `numpy` embedding model turned out to be extremely slow because
 it wasn't vectorised. [`Chainer`](http://chainer.org/) is a python deep learning 
 package that enables us to
 implement the model easily with automatic differentiation and the 
-resulting vectorised operations are fast - and can be run on a GPU if you want. 
+resulting vectorised operations are fast---and can be run on a GPU if you want. 
 In this post I'll explore how the different optimisers perform out of the box.
 
 ## `Chainer` 
@@ -21,14 +21,14 @@ to [Tensorflow](https://github.com/tensorflow/tensorflow)
 
 `Chainer` caught my attention when I first looked at because it made 
 recurrent neural networks easy to do. `Theano`, which was the state-of-the-art
-package at that stage, struggles with RNNs - and RNNs are awesome.
+package at that stage, struggles with RNNs---and RNNs are awesome.
 
 `Chainer`'s interface is a joy to work with and I think the define-by-run 
 scheme is very clever. 
 It might not be the fastest library out there but it is extremely
 flexible and the fact that you can install it with `pip install chainer` 
 clinched it for me. Many other packages are difficult to install and don't 
-really want you to use it without the GPU - sometimes you just need a 
+really want you to use it without the GPU---sometimes you just need a 
 medium-sized deep model that is easy to deploy.
 
 ## Embedding model
@@ -66,8 +66,8 @@ class EmbeddingModel(Chain):
 ```
 
 ## Training setup
-Training is accomplished by defining a loss function - in our case
-the softmax cross entropy loss - and calling the `backward()` method on the
+Training is accomplished by defining a loss function---in our case
+the softmax cross entropy loss---and calling the `backward()` method on the
 loss to run automatic differentiation via back propagation on the model.
 The `optimizer` object
 uses the parameter gradients to update the parameters.

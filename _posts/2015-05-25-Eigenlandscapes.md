@@ -100,7 +100,7 @@ reminding me a lot of some
 <img src="/images/2015-05-25-Eigenlandscapes/output_85.jpg" alt="Eigenlandscape" style="width: 100%;"/>
 
 Note the horse silhouette in the center of the image above, and the
-recurring telephone poles in this set - some of the
+recurring telephone poles in this set---some of the
 features are hard to dilute.
 
 ## Thoughts
@@ -110,7 +110,7 @@ There are a few more things we'd want to try, like
 - different (and possibly much larger) sets of images,
 - passing the resulting images through the algorithm again (initially
  I thought you would get the same images back but after some quick
- experimentation this is not the case - and after repeating 100 times
+ experimentation this is not the case---and after repeating 100 times
  there is a lot of quality loss),
 - doing the same with small video clips (I've always wanted to 
  generate more Spongebob episodes)
@@ -121,14 +121,14 @@ and I have a suspicion that they will look better than a random linear combinati
 of the original photos (must be tested though). 
 
 At this stage I'd like to think that there is some connection between 
-what happens in the brain and the SVD - that we somehow build up a
+what happens in the brain and the SVD---that we somehow build up a
 prototype (archetype?) of images that is similar to how the algorithm 
 decomposes the images. Since the eigenvectors are the directions that
 the images differ most in, it could also be that these directions are
 interesting almost by definition.
 
 A quick google search only found [this](http://www.cs.colostate.edu/~idfah/main/publications/art)
-similar investigation - maybe I'm not using the right search terms?
+similar investigation---maybe I'm not using the right search terms?
 
 Klara also plans to paint some of the images as part of
 an ongoing study on something (ask her to explain).

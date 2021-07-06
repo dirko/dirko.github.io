@@ -16,15 +16,15 @@ calibrated.
 The package's interface is maturing and I think it is almost time
 to start optimising the run-time. Some of the recent changes are:
 
-- `Model` objects are now 'immutable' - the reason I changed this was 
+- `Model` objects are now 'immutable'---the reason I changed this was 
 originally so that we can calculate the factored energy functional, which
 requires access to the original potentials. But it had the nice
 benefit that `Model` objects can be re-used many times.
-- All state now lies with `Inference` objects - much like `sklearn`. 
+- All state now lies with `Inference` objects---much like `sklearn`. 
 When `calibrate` is called on an `Inference` object, `Belief`s are
 updated and afterwards you have an `Inference` object that represents
 a calibrated model.
-- The `calibrate` method now takes as parameter the `evidence` - again
+- The `calibrate` method now takes as parameter the `evidence`---again
 I like the parallel to `sklearn`'s `fit` method which takes `X` and `y`
 as parameters.
 
@@ -49,7 +49,7 @@ the pixel values, but let's rather build it as probabilistic graphical model to
 illustrate how to do it. Let's model the problem as a probability model
 where each pixel-value is a discrete random variable that can take on one of
 32 values. Then there is another random variable associated with each pixel
-that can take on one of 2 values - `foreground` or `background`. Let's call 
+that can take on one of 2 values---`foreground` or `background`. Let's call 
 this variable the `label`. 
 
 For the baseline let us suppose that the probability of the image factorize
@@ -110,8 +110,8 @@ for i in xrange(I):
         evidence[observation_variable_name] = image[i, j]
 ```
 
-We also add the observation - the actual value that the pixels take on in
-the image - to the evidence dictionary. Note that each variable must have
+We also add the observation---the actual value that the pixels take on in
+the image---to the evidence dictionary. Note that each variable must have
 a name, in this case `label_1_5`, or `obs_9_12` for example. So there are
 parameter names (`obs_low` and `obs_high`) which must be strings, and
 random variable names (`label_2_2` etc) which in our case are strings but can
@@ -126,7 +126,7 @@ model = Model(factors)
 
 Then choose parameters: 
 (let's choose them so that pixel values between 13 and 18
-have a higher background potential than foreground potential - note that
+have a higher background potential than foreground potential---note that
 we specify the log potentials, hence the negative value for `obs_low`)
 
 ```python
@@ -233,7 +233,7 @@ for i in xrange(I):
             factors.append(factor)
 ```
 
-The calibration of this model is a bit more difficult - it has to run
+The calibration of this model is a bit more difficult---it has to run
 a few iterations. We can peek inside the run by adding a reporter function which
 records the beliefs of a few random variables and also the belief change and
 log partition estimate at each iteration: 
@@ -271,8 +271,8 @@ Now let's choose the parameters so that there is a weak tendency for
 neighbouring labels to be the `same` but still a slightly stronger
  tendency for
 pixel values between 13 and 17 to be associated with `background`.
-(Note that the exact values doesn't really make that much of a difference - 
-it is fun to play around with them a bit to get a feel for how potentials
+(Note that the exact values doesn't really make that much of a 
+difference---it is fun to play around with them a bit to get a feel for how potentials
 translate to eventual marginal probabilities though)
 
 Then we run it and plot `var_values`:
@@ -294,7 +294,7 @@ Finally let's visualize the `label` beliefs:
 
 ![Grid beliefs](/images/2015-08-15-Image-segmentation-with-loopy-belief-propagation/grid_beliefs.png "Grid beliefs")
 
-The noise has been smoothed out - and although we know we can't really 
+The noise has been smoothed out---and although we know we can't really 
 trust the beliefs (many went to exactly 1.0 which we know must be impossible
 for the real marginals), at least they look usable.
 

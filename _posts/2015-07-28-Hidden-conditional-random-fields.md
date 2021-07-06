@@ -2,9 +2,9 @@
 layout: post
 title: Hidden conditional random fields
 ---
-When we want to classify sequences, HCRFs are -
-if we can forget about recurrent neural networks for a moment - 
-discriminative counterparts to hidden Markov models.
+When we want to classify sequences, HCRFs are---if 
+we can forget about recurrent neural networks for a 
+moment---discriminative counterparts to hidden Markov models.
 
 ## HCRFs for gesture recognition
 HCRFs are also called hidden state CRFs, and were introduced as a way to
@@ -20,7 +20,7 @@ decision boundaries between states and is globally normalised.
 The fact that it is globally normalised 
 means that the transition weights cannot be easily interpreted,
 but (in the un-hidden CRF case at least) this solves the 
-label-bias problem - this problem occurs with maximum entropy
+label-bias problem---this problem occurs with maximum entropy
 models ("halfway" between CRFs and HMMs) and 
 means that state-transitions that don't
 occur much in the training data cannot be recognised even with 
@@ -37,8 +37,8 @@ This has now been updated to allow arbitrary features, dense or sparse
 or `scipy.sparse.csr_matrix`). The inner inference loop is implemented
 in `cython`, and everything is wrapped in a `sklearn`-type interface. 
 (My current favourite interface for these types of projects. The evolution
-of machine learning interfaces is something that also fascinates me -
-from `sklearn` to the dynamic chaining of deep layers in something like
+of machine learning interfaces is something that also fascinates 
+me---from `sklearn` to the dynamic chaining of deep layers in something like
 `caffe` or `chainer`).
 
 ## Example

@@ -8,11 +8,11 @@ and the environment (plugins and customizations).
 
 ## Vim is an interface spec 
 With programming languages you should similarly differentiate between the language specification and the tools
-to execute or compile that language. In Haskell this is clear - `haskell` is the name of the language while `ghc` 
+to execute or compile that language. In Haskell this is clear---`haskell` is the name of the language while `ghc` 
 is the name of the most popular compiler. In Python, on the other hand, people often confuse the specification
 and the reference implementation `cPython`.
 
-The most useful part of Vim to me is the interface - I'm happy to move the environment somewhere else because I'm not too
+The most useful part of Vim to me is the interface---I'm happy to move the environment somewhere else because I'm not too
 invested in Vim-specific plugins. For example I already use IntelliJ's excellent IdeaVim plugin, and the Vim mode 
 provided by [codemirror](https://codemirror.net/) in Jupyter notebooks.
 

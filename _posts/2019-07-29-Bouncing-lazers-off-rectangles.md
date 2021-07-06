@@ -34,7 +34,7 @@ console.log('cal');
 startBlocks(canvasElement, 6, 4, 60);
 </script>
 
-The game is to predict in which corner it will end -- for every different sized 
+The game is to predict in which corner it will end---for every different sized 
 floor it would end in one of the three opposite corners from where it started.
 
 To see if there is a pattern, let us play the game on different sized floors.

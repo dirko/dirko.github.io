@@ -147,9 +147,9 @@ We now recursively evaluate the conditions:
         2. Does $$b$$ succeed $$a$$ and $$c$$? No, $$b\nsucc c$$.
 2. Does $$s$$ succeed $$a$$ and $$c$$ and is $$\langle \tau_1(s), tau_2(s) \rangle \succeq \langle \tau_1(t), tau_2(t) \rangle $$?
     - Does $$g(a,b)$$ succeed $$a$$?
-        1. Does a subterm of $$g(a,b)$$ succeed $$a$$? Yes -- $$b\succ a$$.
+        1. Does a subterm of $$g(a,b)$$ succeed $$a$$? Yes---$$b\succ a$$.
     - Does $$g(a,b)$$ succeed $$c$$?
-        1. Does a subterm of $$g(a,b)$$ succeed $$a$$? No -- neither $$a$$ nor $$b$$ succeeds $$c$$.
+        1. Does a subterm of $$g(a,b)$$ succeed $$a$$? No---neither $$a$$ nor $$b$$ succeeds $$c$$.
     - We do not even have to check the termination functions in this case as none of the conditions are met.
 
 We now have an ordering on terms. With that, the following theorem can be stated:
