@@ -114,7 +114,7 @@ Which means that the method specializes `obj` of type `point`.
 So this is of course not really a new language. 
 You might have noticed a striking similarity to ... common lisp!
 
-Basically I've gone through the noop lisp rite-of-passage by playing with 
+Basically I've gone through the noob lisp rite-of-passage by playing with 
 custom lisp syntax. 
 I can recommend this method to quickly learn more about lisp!
 
