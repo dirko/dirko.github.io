@@ -35,10 +35,10 @@ my_function(list(1 2 3))
 ```
 
 ### Loops
-Loops are done with the `loop` function:
+Loops are done with `loop`:
 {% raw %}
 ```lisp
-defun(fizzbuzz ()
+def(fizzbuzz ()
   loop(for i from 0 to 100 do 
     switch(
       {{{i mod 3} = 0} and {{i mod 5} = 0}}
@@ -59,7 +59,7 @@ fizzbuzz()
 Note that white-space is mostly not significant.
 
 ### Hash-maps
-A dictionary (hash-table) can be created with the `dict` keyword.
+A dictionary (hash-table) can be created with `dict`.
 ```lisp
 def(run ()
   let((h)
@@ -75,12 +75,12 @@ run()
 Note that we introduce a new variable with the `let` keyword.
 
 ### Macros
-Macros are defined with `@def`:
+Macros are defined with `macro`:
 ```lisp
-@def(my_log (f) 
+macro(my_log (f) 
   print(f)
 )
-log(print(1))
+my_log(print(1))
 >>> (print 1)
 >>> 1
 ```
@@ -139,7 +139,7 @@ defmacro(def (&rest p)
     defun(,@p)
   )
 )
-defmacro(@def (&rest p)
+defmacro(macro (&rest p)
   `defmacro(,@p)
 )
 ```
@@ -169,7 +169,7 @@ def((setf access) (new-value e index)
   )
 )
 
-defmacro(readable:$bracket-apply$ (e &rest index)
+macro(readable:$bracket-apply$ (e &rest index)
   `access(,e ',index)
 )
 (readable:enable-neoteric)
@@ -193,7 +193,7 @@ def(group-pairwise (list)
   )
 )
 
-@def(switch (&rest args)
+macro(switch (&rest args)
   let((v)
     {v := group-pairwise(args)}
     cons('cond v)
@@ -217,8 +217,9 @@ why anyone would be put off with the syntax -- it quickly fades into the backgro
 Disadvantages:
 - Macros do not directly map to the language -- although I was surprised at how easily it still mapped.
 - Biggest disadvantage for me was the editor couldn't send top-level 
- definitions to the repl if it started as `defun(...)` 
- rather than `(defun ...)`. So while developing I mostly kept the outside braces.
+ definitions to the repl if it started as `def(...)` 
+ rather than `(def ...)`. So while developing I mostly kept the outside braces.
 - Also the editor (I was using SLIME) indented completely differently than what I wanted in this case, so lots of manual re-indenting afterwards.
 - The infix assignment (e.g. `{v := 3}`) looks awkward.
 - The normal lisp indenting is nice and compact -- no reason to double the lines of code by closing braces on their own lines.
+
