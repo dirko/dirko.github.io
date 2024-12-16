@@ -10,6 +10,9 @@ This post contains my notes on the problem and show how the approximation bound 
 be proven.
 
 ## The set cover problem
+*Disclaimer: I don't know what I'm talking about*
+
+
 The minimum set cover problem is one of the classical NP-complete problems that 
 has been extensively studied:
 Given a family of sets $$ X = \{\ X_1, X_2, \dots, X_n\ \} $$ and the 
@@ -50,7 +53,7 @@ the algorithm gives a solution that is within a factor of $$\alpha$$ of the true
 In other words, it is a bound on the worst-case performance of the algorithm 
 [[1](https://courses.engr.illinois.edu/cs583/sp2018/Notes/intro.pdf)].
 
-One of the ratio's that were proven for the greedy set cover is 
+One of the ratios that were proven for the greedy set cover is 
 $$\alpha=\sum_{k=1}^n \frac{1}{k} \approx \ln k$$, 
 where $$n$$ is the number of elements in the universe $$U$$.
 (There is also a tighter bound $$\sum_{k=1}^d \frac{1}{d}$$, where $$d$$ is the number of elements
@@ -62,7 +65,7 @@ So how can we prove that this is the approximation ratio for this algorithm?
 Let's follow, at a high level, the argument in the lecture notes of Deeparnab Chakrabarty 
 [[2](https://www.cs.dartmouth.edu/~deepc/LecNotes/Appx/1b.%20Greedy%20Algorithms%20and%20Submodularity.pdf)].
 
-A set function $$f$$ assigns a value to any subset of a universe $$V$$, $$f: 2^V \mapsto \mathbb{N}$$.
+A set function $$f$$ assigns a value to any subset of a universe $$V$$, $$f: 2^V \to \mathbb{N}$$.
 A set function is submodular if for any $$A\subseteq B \subseteq V$$, and $$i \in V \setminus B$$,
 $$f(A \cup i) - f(A) \geq f(B\cup i) - f(B) $$.
 
